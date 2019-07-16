@@ -1,5 +1,6 @@
 <script>
 	import InputWrapper from '@/form/InputWrapper.svelte'
+	import Button from '@/common/Button.svelte'
 	import TagInput from '@/form/TagInput.svelte'
 	import {tools} from './store'
 
@@ -36,7 +37,7 @@
 </style>
 
 <div class="tool-form">
-	<InputWrapper label="Tool Name" name="name" bind:error={error.name} required={true}>
+	<InputWrapper label="Tool Name" name="name" bind:error={error.name} >
 		<input type="text" name="name" bind:value={tool.name}>
 	</InputWrapper>
 	<InputWrapper label="Tool Link" name="link" bind:error={error.link}>
@@ -50,6 +51,6 @@
 	</InputWrapper>
 	<div class="align-right">
 		{#if cancel}<button on:click={cancel} class="btn">Cancel</button>{/if}
-		<button class="btn btn-primary" on:click={onSubmit}>Add Tool</button>
+		<Button on:click={onSubmit}>Add Tool</Button>
 	</div>
 </div>

@@ -44,12 +44,21 @@
 		transition: .3s border, .3s background-color;
 		display: flex;
 		flex-wrap:wrap;
+		font-size: 0.7em;
 
-		:global(input) {
+		input {
 			border: none;
 			background-color: none;
 			outline:none;
 			width: auto;
+			padding: 0;
+			flex: 1;
+			min-width: 100px;
+			margin:0;
+		}
+
+		.tag {
+
 		}
 	}
 </style>

@@ -30,12 +30,13 @@
 
 			label span {
 				color: var(--errorColor);
+				
 			}
 
 			.error {
 				text-align: right;
 				margin: 0;
-				font-size: .9em;
+				font-size: .8em;
 				color: var(--errorColor);
 				position: absolute;
 				bottom: 0;
