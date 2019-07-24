@@ -23,8 +23,8 @@ async function start(set) {
 	return () => false;		
 }
 
-async function filter(filter, isTagOnly) {
-	console.log(filter, isTagOnly)
+async function filter(filter, isTagOnly, didDebounce=false) {
+	console.log(filter, isTagOnly, didDebounce)
 }
 async function submit(tool) {
 	console.log(tool)

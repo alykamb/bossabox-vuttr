@@ -8,6 +8,17 @@ $types: neutral danger success;
 	transition: .3s;
 	outline: none;
 	cursor: pointer;
+	--textColor: white;
+	--pading: .6em 1.3em;
+	--bgColor: var(--color-neutral);
+	font-size: 1rem;
+	display: inline-block;
+	text-decoration: none;
+	/* font-size: 0.8em; */
+	text-align: center;
+	align-items: flex-start;
+	box-sizing: border-box;
+	margin: 0em;
 
 	--textColor: white;
 	--pading: .6em 1.3em;
@@ -25,7 +36,11 @@ $types: neutral danger success;
 	
 
 	@each $type in $types {
-		&.#{$type}.primary {
+		$class: ".#{$type}";
+		@if $type == neutral {
+			$class: "";
+		}
+		&#{$class}.primary {
 			--bgColor:var(--color-#{$type});
 			
 			&:hover {
@@ -38,7 +53,7 @@ $types: neutral danger success;
 				--bgColor:var(--color-#{$type}-lighter);
 			}
 		}			
-		&.#{$type} {
+		&#{$class} {
 			&.secondary, &.tertiary {
 				--bgColor:var(--color-#{$type}-mostlightest);
 				--textColor:var(--color-#{$type});
@@ -53,10 +68,10 @@ $types: neutral danger success;
 				}
 			}
 		}			
-		&.#{$type}.tertiary {
+		&#{$class}.tertiary {
 			--pading: .3em 1.3em;
 		}			
-		&.#{$type}.quaternary {
+		&#{$class}.quaternary {
 			--pading: .3em 1.3em;
 			--bgColor:none;
 			--textColor:var(--color-#{$type});

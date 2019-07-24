@@ -1,11 +1,13 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import replace from 'rollup-plugin-replace';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 // import { sass } from "svelte-preprocess-sass";
 import autoPreprocess  from 'svelte-preprocess';
 import alias from 'rollup-plugin-alias';
+import svg from 'rollup-plugin-svg'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -19,7 +21,8 @@ export default {
 	},
 	plugins: [
 		alias({
-			'@': 'src'
+			'@': 'src',
+			resolve: ['.js', '/index.js'] 
 		}),
 		svelte({
 			// enable run-time checks when not in production
@@ -33,7 +36,10 @@ export default {
 				scss: { includePaths: ['src', 'node_modules'] },
 			})
 		}),
-
+		replace({
+			'process.env.NODE_ENV': JSON.stringify('production')
+		}),
+		svg(),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration 

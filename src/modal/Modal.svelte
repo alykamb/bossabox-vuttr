@@ -1,5 +1,4 @@
 <script>
-	import Button from '@/common/Button.svelte'
 	import {modal} from './store.js'
 
 	const onClose = $modal.onClose || (() => {
@@ -24,7 +23,7 @@
 			{#if $modal.actions}
 				<div class={`align-${$modal.type === 'primary' ? 'center' : 'right'}`}>
 					{#each $modal.actions as action, index}
-						<Button on:click={action.click}>{action.label}</Button>
+						<button class={`btn ${action.type}`} on:click={action.click}>{action.label}</button>
 					{/each}
 				</div>
 			{/if}

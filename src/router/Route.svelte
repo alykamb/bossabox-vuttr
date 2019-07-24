@@ -4,7 +4,7 @@
 	import pathToRegex from 'path-to-regexp'
 
 	export let path = '/';
-	export let component;
+	export let component;	
 
 	let locationState = getContext(key);
 	let pathname;
@@ -32,9 +32,13 @@
 	$: match = re.test(pathname);
 	$: if(params) {
 		props = keys.reduce((acc, k, i) => ({...acc, [k['name']]:params[i+1]||null}), {})
-	}
+	}	
 </script>
 
 {#if match}
-	<svelte:component this={component} {...props}/>
+	{#if component}	
+		<svelte:component this={component} location={props} pathname={pathname}/>
+	{:else}
+		<slot pathname={pathname} location={params}></slot>
+	{/if}
 {/if}

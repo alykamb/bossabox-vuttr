@@ -1,4 +1,9 @@
 <script>
+	import { fly } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+	
+	import CloseButton from '@/common/CloseButton.svelte'
+
 	export let tags = []
 	export let name = 'tags'
 
@@ -37,8 +42,8 @@
 		color:var(--color);	
 		background-color: var(--bgColor);
 		border: 1px solid var(--borderColor);
-		border-radius: var(--inputBorderRadius);
-		padding: .5em .9em;
+		border-radius: var(--borderRadius);
+		padding: .1em;
 		box-sizing: border-box;
 		width: calc(100%);
 		transition: .3s border, .3s background-color;
@@ -54,16 +59,29 @@
 			padding: 0;
 			flex: 1;
 			min-width: 100px;
-			margin:0;
+			margin:.4em;
 		}
+	}
 
-
+	.tag {
+		position: relative;
+		display: flex;
+		align-items: center;
+		padding: .3em;
+		margin: .1em;
+		:global(button) {
+			width: 20px;
+			height: 20px;
+		}
 	}
 </style>
 
 <div class="tag-input">	
 	{#each tags as tag, i}
-		<div class="tag"><span>#{tag}</span><button on:click={() => remove(i)}></button></div>
+		<div class="tag card" in:fly={{x:10, opacity:1}} >
+			<span>{tag}</span>
+			<CloseButton on:click={() => remove(i)}></CloseButton>
+		</div>
 	{/each}
 	<input type="text" name={name} on:keydown={keydown} bind:value={currentTag} on:blur={blur}>
 </div>

@@ -1,0 +1,27 @@
+input[type=text], 
+input[type=email], 
+input[type=password], 
+input[type=range], 
+input[type=number], 
+textarea {
+	--bgColor:#F5F4F6;
+	--borderColor:#EBEAED;
+	color:var(--color);	
+
+	background-color: var(--bgColor);
+	border: 1px solid var(--borderColor);
+	border-radius: var(--borderRadius);
+	padding: .5em .9em;
+	box-sizing: border-box;
+	width: calc(100%);
+	transition: .3s border, .3s background-color;
+}
+
+textarea {
+	height: 7em;
+}
+
+label {
+	font-weight: semi-bold;
+	font-weight: 600;
+}

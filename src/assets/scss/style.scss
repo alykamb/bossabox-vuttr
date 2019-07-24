@@ -2,47 +2,50 @@
 @import 'assets/scss/colors.scss';
 
 :root {
-	--fontSize: 20px;
+	--fontSize: 16px;
 	--errorColor:#F95E5A;
 	--bgErrorColor:#feefee;
-	--inputBorderRadius: 5px;
+	--borderRadius: 5px;
 	--color:#170C3A;
 	--color_lightInk: #8F8A9B;
 	--borderColor:#EBEAED;
 	--bgColor:#F5F4F6;
+
+
+}
+
+* {
+	color:var(--color);	
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: var(--fontSize);
 }
 
 body {
-	color:var(--color);	
-	font: 400 var(--fontSize) 'Source Sans Pro', sans-serif;
+	margin: 0;
+	display: flex;
+	flex-direction: column;	
+	min-height: 100vh;
+	max-width: 100vw;
+	overflow-x: hidden;
+	background-color: #FCFCFD
 }
 
-input, textarea {
-	--bgColor:#F5F4F6;
-	--borderColor:#EBEAED;
-	color:var(--color);	
-
-	background-color: var(--bgColor);
-	border: 1px solid var(--borderColor);
-	border-radius: var(--inputBorderRadius);
-	padding: .5em .9em;
-	box-sizing: border-box;
-	width: calc(100%);
-	transition: .3s border, .3s background-color;
-}
-
-textarea {
-	height: 7em;
-}
-
-label {
-	// font-family: 'PT Mono', monospace;
-	font-weight: semi-bold;
-	font-weight: 600;
+.main {
+	flex: 1;
 }
 
 .align-right {
 	text-align: right;
 }
 
+.content {
+	max-width: calc(960px - 1em);
+	padding: 1em;
+	margin: 0 auto;
+}
+
 @import 'assets/scss/button.scss';
+@import 'assets/scss/typography.scss';
+@import 'assets/scss/inputs.scss';
+@import 'assets/scss/card.scss';
+@import 'assets/scss/elevation.scss';
