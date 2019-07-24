@@ -1,0 +1,74 @@
+$types: neutral danger success;
+.btn {		
+	background-color: var(--bgColor);
+	color: var(--textColor);
+	padding: var(--pading);
+	border: none;
+	border-radius: .3em;
+	transition: .3s;
+	outline: none;
+	cursor: pointer;
+
+	--textColor: white;
+	--pading: .6em 1.3em;
+	--bgColor:var(--color-neutral);
+		
+	&:hover {
+		--bgColor:var(--color-neutral-dark);
+	}
+	&:active {
+		--bgColor:var(--color-neutral-darker);
+	}
+	&.disabled {
+		--bgColor:var(--color-neutral-lighter);
+	}
+	
+
+	@each $type in $types {
+		&.#{$type}.primary {
+			--bgColor:var(--color-#{$type});
+			
+			&:hover {
+				--bgColor:var(--color-#{$type}-dark);
+			}
+			&:active {
+				--bgColor:var(--color-#{$type}-darker);
+			}
+			&.disabled {
+				--bgColor:var(--color-#{$type}-lighter);
+			}
+		}			
+		&.#{$type} {
+			&.secondary, &.tertiary {
+				--bgColor:var(--color-#{$type}-mostlightest);
+				--textColor:var(--color-#{$type});
+				&:hover {
+					--bgColor:var(--color-#{$type}-lightest);
+				}
+				&:active {
+					--bgColor:var(--color-#{$type}-lighter);
+				}
+				&.disabled {
+					--textColor:var(--color-#{$type}-lighter);
+				}
+			}
+		}			
+		&.#{$type}.tertiary {
+			--pading: .3em 1.3em;
+		}			
+		&.#{$type}.quaternary {
+			--pading: .3em 1.3em;
+			--bgColor:none;
+			--textColor:var(--color-#{$type});
+			&:hover {
+				--textColor:var(--color-#{$type}-dark);
+			}
+			&:active {
+				--textColor:var(--color-#{$type}-darker);
+			}
+			&.disabled {
+				--textColor:var(--color-#{$type}-lighter);
+			}
+		}			
+	}
+}

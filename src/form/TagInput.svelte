@@ -57,9 +57,7 @@
 			margin:0;
 		}
 
-		.tag {
 
-		}
 	}
 </style>
 

@@ -19,7 +19,7 @@
 			<button on:click={onClose}></button>
 			{#if $modal.header}<div class="header">{$modal.header}</div>{/if}
 			<div class="content">
-				<svelte:component this={$modal.component} foo={bar} />
+				<svelte:component this={$modal.component} />
 			</div>
 			{#if $modal.actions}
 				<div class={`align-${$modal.type === 'primary' ? 'center' : 'right'}`}>
