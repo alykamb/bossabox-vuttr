@@ -12,6 +12,7 @@
 	}
 
 	function keydown(e) {	
+		currentTag = currentTag.replace('#', '');
 		const value = currentTag.trim();
 		if(value) {
 			if(e.keyCode === 32 || e.keyCode === 13) { // on space or enter, submit tag				

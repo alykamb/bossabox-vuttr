@@ -14,7 +14,7 @@
 
 <style lang="scss">
 	.modal {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100%;
     top: 0;
@@ -95,11 +95,19 @@
     top: 0;
     margin: 2em;
 	}
+
+	.btn {
+		margin: 1em .6em 0;
+	}
+
+	.btn:last-child {
+		margin-right: 0;
+	}
 </style>
 
 <div class={`modal ${type}`}>
 	<div class="overlay" on:click={onClose} transition:fade={fadeOptions}></div>
-	<div class="container card elevation4" in:fly={{y:-2000, duration:500}} out:fade={fadeOptions}>
+	<div class="container card elevation4" in:fly={{y:-500, duration:500}} out:fade={fadeOptions}>
 		<div class="close-button">
 			<CloseButton on:click={onClose}></CloseButton>
 		</div>

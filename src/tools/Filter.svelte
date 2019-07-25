@@ -1,21 +1,6 @@
 <script>
-	import { tools } from './store.js'
-
-	let value = '';
-	let isTagOnly = false;
-	
-	let timeout;
-	const debouceTime = 400;
-
-	$: if (value.length > 0) {
-		tools.filter(value, isTagOnly);
-		if(timeout) {
-			clearTimeout(timeout)
-		}
-		timeout = setTimeout(() => {
-			tools.filter(value, isTagOnly, true);
-		}, debouceTime)
-	}
+	import Toggler from '@/common/Toggler.svelte'
+	import filter from './filter.js'
 </script>
 
 <style>
@@ -26,19 +11,13 @@
 
 	input[type=text] {
 		width: 200px;
+		margin-right: 1em;
 	}
-
-	.tag-checkbox {
-		display: flex;
-		flex: 1;
-		align-items: center;
-	}
+	
 </style>
 
+
 <div class="tool-filter">
-	<input type="text" bind:value  placeholder="search...">
-	<label class="tag-checkbox" for="isTagOnly">
-		<input type="checkbox" name="isTagOnly" bind:checked={isTagOnly} id="isTagOnly">
-		<span>search in tags only</span>
-	</label>
+	<input type="text" bind:value={$filter.value}  placeholder="search...">	
+	<Toggler bind:checked={$filter.isTagOnly} name="isTagOnly" id="isTagOnly" label="search in tags only"></Toggler>
 </div>

@@ -1,4 +1,5 @@
 <script>	
+	import Plus from '@/assets/icons/Plus.svelte'
 	import Modal from '@/common/Modal.svelte'
 	import InputWrapper from '@/form/InputWrapper.svelte'
 	import TagInput from '@/form/TagInput.svelte'
@@ -6,29 +7,26 @@
 	import {tools} from './store'
 
 	export const tool = {
-		name: '',
+		title: '',
 		link: '',
 		description: '',
 		tags: []
 	}
 
 	const error = {
-		name:null,
+		title:null,
 		link:null,
 	}
 
 	export let cancel = () => nav('/');
 
 	function onSubmit() {
-		const {name, link} = tool
-		if(!name && !link) {
-			error.name = 'Please provide a name or a link';
-			error.link = 'Please provide a name or a link';
-		} else {
-			if(!name) {
-				tool.name = link
-			}
+		const {title} = tool
+		if(!title) {
+			error.title = 'Please provide a name or a link';
+		} else {			
 			tools.submit(tool)
+			nav('/')
 		}
 	}
 </script>
@@ -41,19 +39,34 @@
 	.btn:last-child {
 		margin-right: 0;
 	}
+
+	:global(svg) {
+		max-width: 1em;
+		max-height: 1em;
+		margin-right: .5em;
+	}
+
+	:global(svg .a) {
+		stroke-width: 8px;
+	}
+
+	h3 {
+		display: flex;
+    align-items: center;
+	}
 </style>
 
 <Modal type="large" onClose={cancel}>
 	<div slot="header">
 	{#if tool}
-		<h3>Add new tool</h3>
+		<h3><Plus></Plus> Add new tool</h3>
 	{:else}	
 		<h3>Edit tool</h3>
 	{/if}
 	</div>
 	<div class="tool-form">
-		<InputWrapper label="Tool Name" name="name" bind:error={error.name} >
-			<input type="text" name="name" bind:value={tool.name}>
+		<InputWrapper label="Tool Name" name="title" bind:error={error.title} >
+			<input type="text" name="title" bind:value={tool.title}>
 		</InputWrapper>
 		<InputWrapper label="Tool Link" name="link" bind:error={error.link}>
 			<input type="text" name="link" bind:value={tool.link}>

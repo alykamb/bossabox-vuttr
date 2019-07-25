@@ -1,31 +1,37 @@
 <script>
-	import close from '@/assets/icons/close.svg';
+	import Close from '@/assets/icons/Close.svelte';
 </script>
 
 <style lang="scss">
 	button {
-    width: 25px;
-		height: 25px;
+    
 		border: none;
 		background: none;
 		outline: none;
 		cursor: pointer;
+		display: flex;
+		align-items: center;
 		
 		:global(svg) {
-			width: 100%;
-			height: 100%;
-			transition: .3s;
+			width: 12px;
+			height: 12px;
+			transition: .3s;	
 
 			:global(.a) {
 				stroke: var(--color_lightInk);
 				stroke-width: 8px;
-			}
+			}			
+		}
 
-			&:hover {
+		&:hover {
+			:global(svg) {
 				transform: rotate(90deg);
-
 			}
+		}
+
+		:global(*:not(:first-child)) {
+			margin-left: .5em;
 		}
 	}
 </style>
-<button on:click>{@html close}</button>
+<button on:click><Close /> <slot></slot></button>

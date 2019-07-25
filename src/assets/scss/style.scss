@@ -10,8 +10,8 @@
 	--color_lightInk: #8F8A9B;
 	--borderColor:#EBEAED;
 	--bgColor:#F5F4F6;
-
-
+	--bgColor2:#EBEAED;
+	--borderColor2:#DEDCE1;
 }
 
 * {
@@ -36,6 +36,9 @@ body {
 
 .align-right {
 	text-align: right;
+}
+.align-center {
+	text-align: center;
 }
 
 .content {

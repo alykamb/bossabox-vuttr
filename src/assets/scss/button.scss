@@ -72,7 +72,7 @@ $types: neutral danger success;
 			--pading: .3em 1.3em;
 		}			
 		&#{$class}.quaternary {
-			--pading: .3em 1.3em;
+			--pading: .3em .3em;
 			--bgColor:none;
 			--textColor:var(--color-#{$type});
 			&:hover {
