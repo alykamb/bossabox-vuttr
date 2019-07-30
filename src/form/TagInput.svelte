@@ -70,8 +70,16 @@
 		padding: .3em;
 		margin: .1em;
 		:global(button) {
-			width: 20px;
-			height: 20px;
+			width: 10px;
+			height: 10px;
+			padding: 0;
+			display: flex;
+			margin: 0 6px;
+			justify-content: flex-end;
+
+			:global(svg) {
+				margin: 0;
+			}
 		}
 	}
 </style>
@@ -80,7 +88,7 @@
 	{#each tags as tag, i}
 		<div class="tag card" in:fly={{x:10, opacity:1}} >
 			<span>{tag}</span>
-			<CloseButton on:click={() => remove(i)}></CloseButton>
+			<CloseButton on:click={() => remove(i)}> </CloseButton>
 		</div>
 	{/each}
 	<input type="text" name={name} on:keydown={keydown} bind:value={currentTag} on:blur={blur}>
