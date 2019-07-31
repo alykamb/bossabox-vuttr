@@ -18,15 +18,26 @@
 		link:null,
 	}
 
+	let submited = false; 
+
 	export let cancel = () => nav('/');
 
+	//check if has a title and submit
 	function onSubmit() {
 		const {title} = tool
+		submited = true;
 		if(!title) {
 			error.title = 'Please provide a name or a link';
 		} else {			
 			tools.submit(tool)
 			nav('/')
+		}
+	}
+
+	// check error on change after first submit
+	const onTitleChange = () => {
+		if(submited) {
+			error.title = tool.title ? null : 'Please provide a name or a link';			
 		}
 	}
 </script>
@@ -66,7 +77,7 @@
 	</div>
 	<div class="tool-form">
 		<InputWrapper label="Tool Name" name="title" bind:error={error.title} >
-			<input type="text" name="title" bind:value={tool.title}>
+			<input type="text" name="title" bind:value={tool.title} on:keydown={onTitleChange}>
 		</InputWrapper>
 		<InputWrapper label="Tool Link" name="link" bind:error={error.link}>
 			<input type="text" name="link" bind:value={tool.link}>
